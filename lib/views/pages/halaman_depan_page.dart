@@ -1,203 +1,155 @@
 import 'package:flutter/material.dart';
 
-class HalamanDepanPage extends StatelessWidget {
-  const HalamanDepanPage({super.key});
+void main() {
+  runApp(MyApp());
+}
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70),
-        child: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
-            child: Row(
-              children: [
-                const Icon(Icons.menu, color: Colors.black),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        hintText: 'cari item',
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                const CircleAvatar(
-                  backgroundColor: Colors.black12,
-                  child: Icon(Icons.person, color: Colors.black),
-                ),
-              ],
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: TextField(
+          decoration: InputDecoration(
+            hintText: 'Search Camping Equipment',
+            prefixIcon: Icon(Icons.search, color: Color(0xFFFE8C00)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
             ),
           ),
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Filter Kategori
-            const SizedBox(height: 16),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                FilterChip(label: Text('Semua'), selected: true, onSelected: (_) {}),
-                FilterChip(label: Text('Ransel'), selected: false, onSelected: (_) {}),
-                FilterChip(label: Text('Alat Masak'), selected: false, onSelected: (_) {}),
-                FilterChip(label: Text('Jaket & Sepatu'), selected: false, onSelected: (_) {}),
-                FilterChip(label: Text('Tenda'), selected: false, onSelected: (_) {}),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                FilterChip(label: Text('Penerangan'), selected: false, onSelected: (_) {}),
-                FilterChip(label: Text('Alat Tidur'), selected: false, onSelected: (_) {}),
-                FilterChip(label: Text('Lainnya'), selected: false, onSelected: (_) {}),
-              ],
-            ),
-
-
-            // Tombol Urutkan
-            const SizedBox(height: 16),
-            Align(
-              alignment: Alignment.centerRight,
-              child: ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.sort),
-                label: const Text("Urutkan"),
-                style: ElevatedButton.styleFrom(
-                  elevation: 2,
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  side: const BorderSide(color: Colors.black12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Wrap(
+                spacing: 8.0,
+                children: [
+                  ChoiceChip(label: Text('Semua'), selected: true, selectedColor: Color(0xFFFE8C00)),
+                  ChoiceChip(label: Text('Ransel'), selected: false),
+                  ChoiceChip(label: Text('Alat Masak'), selected: false),
+                  ChoiceChip(label: Text('Jaket & Sepatu'), selected: false),
+                  ChoiceChip(label: Text('Tenda'), selected: false),
+                ],
               ),
             ),
-
-            // Daftar Item
-            const SizedBox(height: 12),
-            _buildItemCard(
-              image: Icons.image,
-              title: 'Tenda 8 orang',
-              price: 'Rp. 60.000',
-              stok: 'sisa 3',
-              desc: 'Tenda dibuat dari bahan xyz yang tahan kecepatan angin xyz',
-            ),
-            const SizedBox(height: 12),
-            _buildItemCard(
-              image: Icons.image,
-              title: 'Sepatu Gunung',
-              price: 'Rp. 30.000',
-              stok: 'sisa 10',
-              desc: 'Sepatu waterproof, merk XYZ semua ukuran',
-            ),
-
-            // Paket Pilihan
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildPaketBox(Icons.image, 'Paket Hemat 1'),
-                _buildPaketBox(Icons.image, 'Paket Promo A'),
-                _buildPaketBox(Icons.image, 'Paket Lengkap'),
-              ],
-            ),
-            const SizedBox(height: 32),
+            SectionTitle(title: 'Exclusive Offer'),
+            EquipmentList([
+              EquipmentItem('Tenda 8 Orang', 'Rp. 60.000/hari', 'assets/tent.png'),
+              EquipmentItem('Sepatu Gunung', 'Rp. 30.000/hari', 'assets/boots.png'),
+            ]),
+            SectionTitle(title: 'Best Selling'),
+            EquipmentList([
+              EquipmentItem('Matras Camping', 'Rp. 20.000/hari', 'assets/mat.png'),
+              EquipmentItem('Kompor Portable', 'Rp. 40.000/hari', 'assets/stove.png'),
+            ]),
           ],
         ),
       ),
-
-      // Bottom Navigation
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.deepPurple,
-        unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
-        currentIndex: 0,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), label: 'Chat'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: 'Wishlist'),
-          BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: 'Transaksi'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: 'Keranjang'),
+        selectedItemColor: Color(0xFFFE8C00),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.store), label: 'Shop'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favourite'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account'),
         ],
       ),
     );
   }
+}
 
-  Widget _buildItemCard({
-    required IconData image,
-    required String title,
-    required String price,
-    required String stok,
-    required String desc,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.pink[50],
-        borderRadius: BorderRadius.circular(16),
-      ),
+class SectionTitle extends StatelessWidget {
+  final String title;
+  SectionTitle({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(image, size: 40),
+          Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('See all', style: TextStyle(color: Color(0xFFFE8C00))),
+        ],
+      ),
+    );
+  }
+}
+
+class EquipmentList extends StatelessWidget {
+  final List<EquipmentItem> items;
+  EquipmentList(this.items);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: EdgeInsets.all(8.0),
+      child: Row(
+        children: items,
+      ),
+    );
+  }
+}
+
+class EquipmentItem extends StatelessWidget {
+  final String title;
+  final String price;
+  final String imagePath;
+
+  EquipmentItem(this.title, this.price, this.imagePath);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      margin: EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(color: Colors.grey.shade300, blurRadius: 5, spreadRadius: 2),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            child: Image.asset(imagePath, height: 100, fit: BoxFit.cover),
           ),
-          const SizedBox(width: 12),
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('$title\n$price ($stok)', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 4),
-                Text(desc, style: const TextStyle(fontSize: 14, color: Colors.black54)),
+                Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
+                SizedBox(height: 4),
+                Text(price, style: TextStyle(color: Colors.black)),
               ],
             ),
-          )
+          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildPaketBox(IconData icon, String title) {
-    return Column(
-      children: [
-        Container(
-          width: 64,
-          height: 64,
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(icon, size: 40),
-        ),
-        const SizedBox(height: 8),
-        Text(title, style: const TextStyle(fontSize: 12)),
-      ],
     );
   }
 }
