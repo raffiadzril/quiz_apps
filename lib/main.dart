@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
       title: 'Quiz UI Navigation',
       theme: ThemeData(
         fontFamily: 'Gilroy', // Menggunakan font Gilroy Family
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 244, 255, 242)),
         brightness: Brightness.light,
         useMaterial3: true,
       ),
