@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_apps/views/pages/promo_page.dart';
 import 'views/widget_tree.dart';
 import 'views/pages/halaman_depan_page.dart';
 import 'views/pages/rincian_item_page.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/wishlist': (context) => const WishlistPage(),
         '/keranjang-checkout': (context) => const KeranjangCheckoutPage(),
         '/pembelian-paket': (context) => const PembelianPaketPage(),
+        '/promo': (context) => const PromoPage(),
         '/monitor-pesanan': (context) => const MonitorPesananPage(),
         '/pengembalian': (context) => const PengembalianPage(),
       },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../data/navbar_notifier.dart';
 
 class NavbarWidget extends StatelessWidget {
   final int currentIndex;
@@ -13,35 +12,78 @@ class NavbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isWideScreen = MediaQuery.of(context).size.width > 600;
+
+    final navItems = const [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.storefront),
+        label: 'Beranda',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.chat),
+        label: 'Pesan',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.receipt_long),
+        label: 'Transaksi',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.favorite),
+        label: 'Wishlist',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.shopping_cart),
+        label: 'Keranjang',
+      ),
+    ];
+
+    if (isWideScreen) {
+      return Material(
+        elevation: 4,
+        color: Colors.white,
+        child: Container(
+          height: 70,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(navItems.length, (index) {
+              final item = navItems[index];
+              final isSelected = currentIndex == index;
+              return GestureDetector(
+                onTap: () => onTap(index),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      (item.icon as Icon).icon,
+                      color: isSelected ? Color(0xFFFE8C00) : Colors.black,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      item.label ?? '',
+                      style: TextStyle(
+                        color: isSelected ? Color(0xFFFE8C00) : Colors.black,
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+          ),
+        ),
+      );
+    }
+
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
-      selectedItemColor: Color(0xFF8EB486), // warna hijau saat aktif
+      selectedItemColor: Color(0xFFFE8C00),
       unselectedItemColor: Colors.black,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.storefront),
-          label: 'Beranda',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.chat),
-          label: 'Pesan',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.receipt_long),
-          label: 'Transaksi',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'Wishlist',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
-          label: 'Keranjang',
-        ),
-      ],
+      items: navItems,
     );
   }
 }
