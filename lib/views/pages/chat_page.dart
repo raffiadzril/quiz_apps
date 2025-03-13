@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ChatScreen extends StatelessWidget {
+class ChatPage extends StatelessWidget {
   final List<Map<String, dynamic>> messages = [
     {"isUser": true, "text": "Bang, gue baru pertama kali camping, alat apa aja yang gue butuhin biar ga ribet?"},
     {"isUser": false, "text": "Baik, untuk camping pertama kali, Anda memerlukan tenda, matras, sleeping bag, serta alat masak sederhana agar tetap nyaman di alam."},

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HalamanDepanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class EquipmentDetailPage extends StatelessWidget {
+class RincianItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
