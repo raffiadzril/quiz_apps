@@ -9,6 +9,7 @@ import 'views/pages/keranjang_checkout_page.dart';
 import 'views/pages/pembelian_paket_page.dart';
 import 'views/pages/monitor_pesanan_page.dart';
 import 'views/pages/pengembalian_page.dart';
+import 'views/pages/review_comment.dart'
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/halaman-depan': (context) => const HalamanDepanPage(),
         '/rincian-item': (context) => const RincianItemPage(),
         '/chat': (context) => const ChatPage(),
+        '/review-comment': (context) => const ReviewPage(),
         '/wishlist': (context) => const WishlistPage(),
         '/keranjang-checkout': (context) => const KeranjangCheckoutPage(),
         '/pembelian-paket': (context) => const PembelianPaketPage(),
