@@ -29,7 +29,7 @@ class ChatPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: NavbarWidget(
-        currentIndex: 0,
+        currentIndex: 1,
         onTap: (index) {
           // Handle navigation tap
         },
