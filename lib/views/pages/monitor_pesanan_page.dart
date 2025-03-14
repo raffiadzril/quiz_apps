@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_apps/views/widgets/navbar_widget.dart';
 
 class MonitorPesananPage extends StatelessWidget {
   @override
@@ -7,15 +8,18 @@ class MonitorPesananPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
-          'Monitor Pesanan',
-          style: TextStyle(
-            fontFamily: 'Gilroy',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+        title: Center(
+          child: Text(
+            'Monitor Pesanan',
+            style: TextStyle(
+              fontFamily: 'Gilroy',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
         ),
+        
         actions: [
           IconButton(
             onPressed: () {
@@ -27,6 +31,12 @@ class MonitorPesananPage extends StatelessWidget {
             icon: Icon(Icons.refresh, color: Color(0xFFFE8C00)),
           ),
         ],
+      ),
+            bottomNavigationBar: NavbarWidget(
+        currentIndex: 2,
+        onTap: (index) {
+          // Handle navigation tap
+        },
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(16),

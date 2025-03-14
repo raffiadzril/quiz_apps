@@ -6,7 +6,6 @@ import '../pages/rincian_item_page.dart';
 import '../pages/chat_page.dart';
 import '../pages/wishlist_page.dart';
 import '../pages/keranjang_checkout_page.dart';
-import '../pages/pembelian_paket_page.dart';
 import '../pages/monitor_pesanan_page.dart';
 import '../pages/pengembalian_page.dart';
 import '../pages/review_comment.dart';
