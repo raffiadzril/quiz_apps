@@ -103,30 +103,42 @@ class RincianItemPage extends StatelessWidget {
                   ),
                 ],
               ),
-              ExpansionTile(
-                title: Text('Spesifikasi', style: Theme.of(context).textTheme.titleLarge),
+                ExpansionTile(
+                title: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Spesifikasi', style: Theme.of(context).textTheme.titleLarge),
+                ),
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+                  padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
                     child: Text(
-                      '- Kapasitas: 4 Orang\n- Bahan: Waterproof Polyester\n- Dimensi: 210 x 210 x 130 cm\n- Berat: 2.5 kg\n- Ventilasi: Jendela dengan jaring anti serangga',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                    '- Kapasitas: 4 Orang\n- Bahan: Waterproof Polyester\n- Dimensi: 210 x 210 x 130 cm\n- Berat: 2.5 kg\n- Ventilasi: Jendela dengan jaring anti serangga',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
                     ),
                   ),
+                  ),
                 ],
-              ),
+                ),
               ExpansionTile(
                 title: Text('Review', style: Theme.of(context).textTheme.titleLarge),
                 children: [
-                  Row(
-                    children: List.generate(5, (index) => Icon(Icons.star, color: Colors.orange)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+                    child: Row(
+                      children: List.generate(5, (index) => Icon(Icons.star, color: Colors.orange)),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
                     child: Text(
                       'Sangat nyaman dan berkualitas! Cocok untuk pendakian dan camping keluarga. Mudah dipasang dan sangat ringan untuk dibawa.',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
                     ),
+                    )
                   ),
                 ],
               ),
