@@ -38,7 +38,6 @@ class WidgetTree extends StatelessWidget {
                 buildButton(context, 'Wishlist', '/wishlist'),
                 buildButton(context, 'Keranjang & Checkout', '/keranjang-checkout'),
                 buildButton(context, 'Pembelian Paket', '/pembelian-paket'),
-                buildButton(context, 'Promo', '/promo'),
                 buildButton(context, 'Review & Comment', '/review-comment'),
                 SizedBox(height: 20),
                 Text("Transaksi", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
