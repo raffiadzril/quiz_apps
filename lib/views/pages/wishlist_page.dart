@@ -6,6 +6,8 @@ class WishlistPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       bottomNavigationBar: NavbarWidget(
         currentIndex: 3,
@@ -15,12 +17,11 @@ class WishlistPage extends StatelessWidget {
       ),
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Wishlist',
-          style: TextStyle(
+          style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            fontSize: 20,
-            color: Color(0xFF1E1E1E),
+            color: const Color(0xFF1E1E1E),
           ),
         ),
         backgroundColor: Colors.white,
@@ -78,9 +79,12 @@ class WishlistPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              child: const Text(
+              child: Text(
                 'Masukan Semua ke Keranjang',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                style: theme.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -106,6 +110,8 @@ class WishlistItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -128,28 +134,31 @@ class WishlistItemWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      )),
+                  Text(
+                    title,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text(subtitle,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      )),
+                  Text(
+                    subtitle,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                Text(price,
-                  style: const TextStyle(
+              children: [
+                Text(
+                  price,
+                  style: theme.textTheme.bodySmall?.copyWith(
                     fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  )),
+                  ),
+                ),
                 const SizedBox(height: 4),
                 const Icon(Icons.favorite, color: Color(0xFFFE8C00), size: 20),
               ],

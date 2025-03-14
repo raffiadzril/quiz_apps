@@ -23,18 +23,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Quiz UI Navigation',
       theme: ThemeData(
-        fontFamily: 'Gilroy', // Menggunakan font Gilroy Family
+        fontFamily: 'Serif', // Menggunakan font Gilroy Family
         brightness: Brightness.light,
         useMaterial3: true,
         textTheme: TextTheme(
-          bodyLarge: TextStyle(fontFamily: 'Gilroy'),
-          bodyMedium: TextStyle(fontFamily: 'Gilroy'),
-          displayLarge: TextStyle(fontFamily: 'Gilroy'),
-          displayMedium: TextStyle(fontFamily: 'Gilroy'),
-          displaySmall: TextStyle(fontFamily: 'Gilroy'),
-          headlineMedium: TextStyle(fontFamily: 'Gilroy'),
-          headlineSmall: TextStyle(fontFamily: 'Gilroy'),
-          titleLarge: TextStyle(fontFamily: 'Gilroy'),
+          bodyLarge: TextStyle(fontFamily: 'Serif'),
+          bodyMedium: TextStyle(fontFamily: 'Serif'),
+          displayLarge: TextStyle(fontFamily: 'Serif'),
+          displayMedium: TextStyle(fontFamily: 'Serif'),
+          displaySmall: TextStyle(fontFamily: 'Serif'),
+          headlineMedium: TextStyle(fontFamily: 'Serif'),
+          headlineSmall: TextStyle(fontFamily: 'Serif'),
+          titleLarge: TextStyle(fontFamily: 'Serif'),
         ),
       ),
       initialRoute: '/',

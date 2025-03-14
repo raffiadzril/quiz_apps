@@ -14,7 +14,7 @@ class HalamanDepanPage extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Camping Equipment',
-                  hintStyle: TextStyle(fontFamily: 'Gilroy', color: Colors.grey),
+                  hintStyle: TextStyle(fontFamily: 'serif', color: Colors.grey),
                   prefixIcon: Icon(Icons.search, color: Color(0xFFFE8C00)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -35,7 +35,7 @@ class HalamanDepanPage extends StatelessWidget {
             Text(
               'Urutkan',
               style: TextStyle(
-                fontFamily: 'Gilroy',
+                fontFamily: 'serif',
                 color: Color(0xFFFE8C00),
                 fontWeight: FontWeight.w600,
                 fontSize: 13,
@@ -73,7 +73,7 @@ class HalamanDepanPage extends StatelessWidget {
                 child: Text(
                   'zrenCamp',
                   style: TextStyle(
-                    fontFamily: 'Gilroy',
+                    fontFamily: 'serif',
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -149,7 +149,7 @@ class HalamanDepanPage extends StatelessWidget {
       label: Text(
         label,
         style: TextStyle(
-          fontFamily: 'Gilroy',
+          fontFamily: 'serif',
           color: isSelected ? Colors.white : Colors.black,
           fontWeight: FontWeight.w600,
         ),
@@ -202,7 +202,7 @@ class SectionTitle extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              fontFamily: 'Gilroy',
+              fontFamily: 'serif',
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -211,7 +211,7 @@ class SectionTitle extends StatelessWidget {
           Text(
             'See all',
             style: TextStyle(
-              fontFamily: 'Gilroy',
+              fontFamily: 'serif',
               color: Color(0xFFFE8C00),
               fontWeight: FontWeight.w600,
             ),
@@ -281,7 +281,7 @@ class EquipmentItem extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
-                    fontFamily: 'Gilroy',
+                    fontFamily: 'serif',
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
@@ -290,7 +290,7 @@ class EquipmentItem extends StatelessWidget {
                 Text(
                   price,
                   style: TextStyle(
-                    fontFamily: 'Gilroy',
+                    fontFamily: 'serif',
                     color: Colors.black,
                     fontSize: 12,
                   ),

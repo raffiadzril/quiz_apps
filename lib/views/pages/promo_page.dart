@@ -5,7 +5,6 @@ class PromoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isWide = MediaQuery.of(context).size.width > 600;
 
     final List<String> promoImages = [
       '../../../assets/images/promob1.png',
