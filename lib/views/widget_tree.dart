@@ -24,7 +24,23 @@ class WidgetTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Quiz 1: UI")),
+      appBar: AppBar(
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+        Text(
+          "Quiz 1: UI",
+          style: TextStyle(fontFamily: 'Serif'),
+        ),
+        Text(
+          "Kelompok 50",
+          style: TextStyle(fontSize: 14),
+        ),
+          ],
+        ),
+      ),
+      
       body: Center(
         child: SingleChildScrollView(
           child: Padding(

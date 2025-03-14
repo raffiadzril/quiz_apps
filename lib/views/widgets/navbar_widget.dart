@@ -1,14 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_apps/views/pages/promo_page.dart';
-import '../widget_tree.dart';
-import '../pages/halaman_depan_page.dart';
-import '../pages/rincian_item_page.dart';
-import '../pages/chat_page.dart';
-import '../pages/wishlist_page.dart';
-import '../pages/keranjang_checkout_page.dart';
-import '../pages/monitor_pesanan_page.dart';
-import '../pages/pengembalian_page.dart';
-import '../pages/review_comment.dart';
 
 class NavbarWidget extends StatelessWidget {
   final int currentIndex;
