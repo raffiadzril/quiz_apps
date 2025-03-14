@@ -19,14 +19,15 @@ class PromoPage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         title: Row(
-          children: [
-            Icon(Icons.local_offer, color: Colors.white),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Icon(Icons.local_offer, color: Colors.black),
             SizedBox(width: 8),
             Text(
               'Promo Hemat',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 0, 0, 0),
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
               ),
             ),
           ],
@@ -51,8 +52,8 @@ class PromoPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 12,
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 30,
                       offset: const Offset(0, 6),
                     ),
                   ],

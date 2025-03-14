@@ -71,7 +71,7 @@ class WishlistPage extends StatelessWidget {
             margin: const EdgeInsets.all(16),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orangeAccent,
+                backgroundColor: const Color(0xFFFE8C00),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -144,14 +144,14 @@ class WishlistItemWidget extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
+                children: [
                 Text(price,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    )),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  )),
                 const SizedBox(height: 4),
-                const Icon(Icons.favorite, color: Colors.orangeAccent, size: 20),
+                const Icon(Icons.favorite, color: Color(0xFFFE8C00), size: 20),
               ],
             ),
           ],

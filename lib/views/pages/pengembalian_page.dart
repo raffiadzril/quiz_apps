@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_apps/views/widgets/navbar_widget.dart';
 
 class PengembalianSewaPage extends StatelessWidget {
   const PengembalianSewaPage({super.key});
@@ -8,17 +9,20 @@ class PengembalianSewaPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: const Color.fromARGB(255, 254, 254, 254),
         elevation: 0,
+        centerTitle: true,
         title: Text(
           'Pengembalian Sewa',
           style: TextStyle(
             fontFamily: 'Gilroy',
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
+        
+
         actions: [
           IconButton(
             onPressed: () {
@@ -30,6 +34,12 @@ class PengembalianSewaPage extends StatelessWidget {
             icon: Icon(Icons.help_outline, color: Colors.white),
           ),
         ],
+      ),
+      bottomNavigationBar: NavbarWidget(
+        currentIndex: 2,
+        onTap: (index) {
+          // Handle navigation tap
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -80,11 +90,11 @@ class PengembalianSewaPage extends StatelessWidget {
                       children: [
                         Text(
                           'Status: Dalam Pengembalian',
-                          style: TextStyle(
+                            style: TextStyle(
                             fontFamily: 'Gilroy',
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: Colors.orange,
+                            color: Color(0xFFFE8C00),
                           ),
                         ),
                         ElevatedButton(
@@ -95,7 +105,7 @@ class PengembalianSewaPage extends StatelessWidget {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
+                            backgroundColor: const Color(0xFFFE8C00),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
