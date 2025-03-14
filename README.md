@@ -74,7 +74,7 @@ _Tampilan promo menarik untuk pengguna._
 ### 8. 📦 **Daftar Transaksi**  
 _Menampilkan status order, proses pengembalian, dan histori pemesanan._
 
-![Transaksi](dokum/monitor_pesanan.png)
+![Transaksi](dokum/monitor_pesanan_page.png)
 
 ---
 
