@@ -10,7 +10,7 @@ class WidgetTree extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => Navigator.pushNamed(context, routeName),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.0),
           ),
@@ -39,6 +39,7 @@ class WidgetTree extends StatelessWidget {
                 buildButton(context, 'Keranjang & Checkout', '/keranjang-checkout'),
                 buildButton(context, 'Pembelian Paket', '/pembelian-paket'),
                 buildButton(context, 'Promo', '/promo'),
+                buildButton(context, 'Review & Comment', '/review-comment'),
                 SizedBox(height: 20),
                 Text("Transaksi", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 buildButton(context, 'Monitor Pesanan', '/monitor-pesanan'),

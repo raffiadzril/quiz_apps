@@ -9,7 +9,7 @@ import 'views/pages/keranjang_checkout_page.dart';
 import 'views/pages/pembelian_paket_page.dart';
 import 'views/pages/monitor_pesanan_page.dart';
 import 'views/pages/pengembalian_page.dart';
-import 'views/pages/review_comment.dart'
+import 'views/pages/review_comment.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,20 +27,30 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Gilroy', // Menggunakan font Gilroy Family
         brightness: Brightness.light,
         useMaterial3: true,
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(fontFamily: 'Gilroy'),
+          bodyMedium: TextStyle(fontFamily: 'Gilroy'),
+          displayLarge: TextStyle(fontFamily: 'Gilroy'),
+          displayMedium: TextStyle(fontFamily: 'Gilroy'),
+          displaySmall: TextStyle(fontFamily: 'Gilroy'),
+          headlineMedium: TextStyle(fontFamily: 'Gilroy'),
+          headlineSmall: TextStyle(fontFamily: 'Gilroy'),
+          titleLarge: TextStyle(fontFamily: 'Gilroy'),
+        ),
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => const WidgetTree(),
-        '/halaman-depan': (context) => const HalamanDepanPage(),
-        '/rincian-item': (context) => const RincianItemPage(),
-        '/chat': (context) => const ChatPage(),
-        '/review-comment': (context) => const ReviewPage(),
+        '/halaman-depan': (context) => HalamanDepanPage(),
+        '/rincian-item': (context) => RincianItemPage(),
+        '/chat': (context) => ChatPage(),
+        '/review-comment': (context) => ReviewPage(),
         '/wishlist': (context) => const WishlistPage(),
         '/keranjang-checkout': (context) => const KeranjangCheckoutPage(),
         '/pembelian-paket': (context) => const PembelianPaketPage(),
         '/promo': (context) => const PromoPage(),
-        '/monitor-pesanan': (context) => const MonitorPesananPage(),
-        '/pengembalian': (context) => const PengembalianPage(),
+        '/monitor-pesanan': (context) => MonitorPesananPage(),
+        '/pengembalian': (context) => const PengembalianSewaPage(),
       },
     );
   }

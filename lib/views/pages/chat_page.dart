@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Gilroy'),
-      home: ChatScreen(),
-    );
-  }
-}
+import 'package:quiz_apps/views/widgets/navbar_widget.dart';
 
 class ChatPage extends StatelessWidget {
   final List<Map<String, dynamic>> messages = [
     {"isUser": true, "text": "Bang, gue baru pertama kali camping, alat apa aja yang gue butuhin biar ga ribet?"},
     {"isUser": false, "text": "Baik, untuk camping pertama kali, Anda memerlukan tenda, matras, sleeping bag, serta alat masak sederhana agar tetap nyaman di alam."},
     {"isUser": true, "text": "Waduh, ribet juga ya. Ga ada yang simpel tapi tetap enak buat dipake?"},
-    {"isUser": false, "text": "Tentu, kami merekomendasikan paket pemula yang sudah termasuk tenda instan, matras lipat, dan kompor portable, sehingga lebih praktis.", "images": ["assets/tent.png", "assets/stove.png", "assets/mat.png"]},
+    {
+      "isUser": false,
+      "text": "Tentu, kami merekomendasikan paket pemula yang sudah termasuk tenda instan, matras lipat, dan kompor portable, sehingga lebih praktis.",
+      "images": ["assets/images/tent.png", "assets/images/stove.png", "assets/images/mat.png"]
+    },
     {"isUser": true, "text": "Wih, mantap nih! Harganya berapa bang?"},
     {"isUser": false, "text": "Paket pemula ini bisa Anda sewa dengan harga Rp 150.000 per hari. Apakah Anda tertarik untuk menyewa?"},
   ];
@@ -38,6 +28,12 @@ class ChatPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: NavbarWidget(
+        currentIndex: 0,
+        onTap: (index) {
+          // Handle navigation tap
+        },
+      ),
       body: Column(
         children: [
           Expanded(
@@ -51,27 +47,28 @@ class ChatPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: message['isUser'] ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: message['isUser'] ? Colors.orange[100] : Colors.grey[200],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Text(
-                          message['text'],
-                          style: TextStyle(fontSize: 16),
+                      // Bubble Chat
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 6.0),
+                        child: CustomPaint(
+                          painter: _ChatBubblePainter(message['isUser']),
+                          child: Container(
+                            constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            child: Text(
+                              message['text'],
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                       if (message.containsKey('images'))
-                        SizedBox(
-                          height: 150,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: message['images'].length,
-                            itemBuilder: (context, imgIndex) {
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Column(
+                            children: message['images'].map<Widget>((image) {
                               return Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
+                                padding: const EdgeInsets.only(bottom: 8.0),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.orange, width: 2),
@@ -80,7 +77,7 @@ class ChatPage extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.asset(
-                                      message['images'][imgIndex],
+                                      image,
                                       width: 150,
                                       height: 150,
                                       fit: BoxFit.cover,
@@ -88,7 +85,7 @@ class ChatPage extends StatelessWidget {
                                   ),
                                 ),
                               );
-                            },
+                            }).toList(),
                           ),
                         ),
                     ],
@@ -97,6 +94,7 @@ class ChatPage extends StatelessWidget {
               },
             ),
           ),
+          // Input Field
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
@@ -120,5 +118,46 @@ class ChatPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+// Custom Painter for Chat Bubble
+class _ChatBubblePainter extends CustomPainter {
+  final bool isUser;
+
+  _ChatBubblePainter(this.isUser);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = isUser ? Colors.orange[100]! : Colors.grey[200]!
+      ..style = PaintingStyle.fill;
+
+    final path = Path();
+    if (isUser) {
+      path.moveTo(size.width - 10, 0);
+      path.lineTo(size.width, 10);
+      path.lineTo(size.width, size.height);
+      path.lineTo(10, size.height);
+      path.lineTo(0, size.height - 10);
+      path.lineTo(0, 10);
+      path.lineTo(10, 0);
+    } else {
+      path.moveTo(10, 0);
+      path.lineTo(size.width - 10, 0);
+      path.lineTo(size.width, 10);
+      path.lineTo(size.width, size.height - 10);
+      path.lineTo(size.width - 10, size.height);
+      path.lineTo(0, size.height);
+      path.lineTo(0, 10);
+    }
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }

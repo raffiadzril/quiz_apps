@@ -71,7 +71,7 @@ class WishlistPage extends StatelessWidget {
             margin: const EdgeInsets.all(16),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF8EB486),
+                backgroundColor: Colors.orangeAccent,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
@@ -151,7 +151,7 @@ class WishlistItemWidget extends StatelessWidget {
                       fontSize: 14,
                     )),
                 const SizedBox(height: 4),
-                const Icon(Icons.favorite, color: Colors.redAccent, size: 20),
+                const Icon(Icons.favorite, color: Colors.orangeAccent, size: 20),
               ],
             ),
           ],

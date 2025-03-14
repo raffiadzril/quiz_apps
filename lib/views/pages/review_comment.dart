@@ -24,7 +24,9 @@ class ReviewPage extends StatelessWidget {
         title: Text('Tenda Camping 4 Orang', style: TextStyle(color: Colors.white)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+        Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -110,7 +112,7 @@ class ReviewPage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
-                        'assets/tenda_camping.jpg', // Ganti dengan URL gambar tenda asli
+                        '../../../assets/images/tenda_camping.jpg', // Ganti dengan URL gambar tenda asli
                         fit: BoxFit.cover,
                       ),
                     ),

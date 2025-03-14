@@ -9,28 +9,58 @@ class KeranjangCheckoutPage extends StatefulWidget {
 }
 
 class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
-  final List<int> quantities = List.generate(4, (index) => 1);
+  final List<Map<String, dynamic>> items = [
+    {
+      'name': 'Eiger Mamba MID - Sepatu',
+      'size': 'Ukuran 42',
+      'price': 25000,
+      'quantity': 1,
+      'image': '../../../assets/images/shoes_mid_eiger.png',
+    },
+    {
+      'name': 'Consina Kabiru - Tenda',
+      'size': '4-5 orang',
+      'price': 120000,
+      'quantity': 1,
+      'image': '../../../assets/images/tent.png',
+    },
+    {
+      'name': 'Kompor Portable',
+      'size': 'Persegi',
+      'price': 20000,
+      'quantity': 1,
+      'image': '../../../assets/images/stove.png',
+    },
+    {
+      'name': 'Matras Camping',
+      'size': 'Ukuran 180x60cm',
+      'price': 20000,
+      'quantity': 1,
+      'image': '../../../assets/images/mat.png',
+    },
+  ];
   double _iconOffset = 0.0;
 
-  int getTotalHarga() {
-    return quantities.fold(0, (sum, qty) => sum + (qty * 25000));
+  double getTotalHarga() {
+    return items.fold(0, (sum, item) => sum + (item['quantity'] * item['price']));
   }
 
   void incrementQuantity(int index) {
     setState(() {
-      quantities[index]++;
-    });
-  }
-
-  void decrementQuantity(int index) {
-    setState(() {
-      if (quantities[index] > 1) quantities[index]--;
+      items[index]['quantity']++;
     });
   }
 
   void removeItem(int index) {
     setState(() {
-      quantities.removeAt(index);
+      items.removeAt(index);
+    });
+  }
+
+  void decrementQuantity(int index) {
+    setState(() {
+      if (items[index]['quantity'] > 1) items[index]['quantity']--;
+      else removeItem(index);
     });
   }
 
@@ -55,7 +85,7 @@ class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: quantities.length,
+              itemCount: items.length,
               itemBuilder: (context, index) {
                 return Dismissible(
                   key: Key(index.toString()),
@@ -76,7 +106,7 @@ class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          '../../../assets/images/shoes_mid_eiger.png',
+                          items[index]['image'],
                           width: 72,
                           height: 72,
                           fit: BoxFit.cover,
@@ -86,16 +116,16 @@ class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                'Eiger Mamba MID - Sepatu',
-                                style: TextStyle(
+                              Text(
+                                items[index]['name'],
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'Ukuran 42',
+                                items[index]['size'],
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey[600],
@@ -113,7 +143,7 @@ class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
                                       horizontal: 12,
                                     ),
                                     child: Text(
-                                      '${quantities[index]}',
+                                      '${items[index]['quantity']}',
                                       style: const TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -138,7 +168,7 @@ class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
                             ),
                             const SizedBox(height: 28),
                             Text(
-                              'Rp${(quantities[index] * 25000).toString()}',
+                              'Rp${(items[index]['quantity'] * items[index]['price']).toString()}',
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -158,7 +188,7 @@ class _KeranjangCheckoutPageState extends State<KeranjangCheckoutPage> {
               setState(() {
                 _iconOffset += details.delta.dx;
                 if (_iconOffset < 0) _iconOffset = 0; // Biar gak geser ke kiri
-                if (_iconOffset > 40) _iconOffset = 40; // Batas kanan
+                if (_iconOffset > 400) _iconOffset = 400; // Batas kanan diperbesar
               });
             },
             onHorizontalDragEnd: (_) {

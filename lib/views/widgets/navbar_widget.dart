@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_apps/views/pages/promo_page.dart';
+import '../widget_tree.dart';
+import '../pages/halaman_depan_page.dart';
+import '../pages/rincian_item_page.dart';
+import '../pages/chat_page.dart';
+import '../pages/wishlist_page.dart';
+import '../pages/keranjang_checkout_page.dart';
+import '../pages/pembelian_paket_page.dart';
+import '../pages/monitor_pesanan_page.dart';
+import '../pages/pengembalian_page.dart';
+import '../pages/review_comment.dart';
 
 class NavbarWidget extends StatelessWidget {
   final int currentIndex;
@@ -37,6 +48,27 @@ class NavbarWidget extends StatelessWidget {
       ),
     ];
 
+    void _onItemTapped(int index) {
+      switch (index) {
+        case 0:
+          Navigator.pushNamed(context, '/halaman-depan');
+          break;
+        case 1:
+          Navigator.pushNamed(context, '/chat');
+          break;
+        case 2:
+          Navigator.pushNamed(context, '/monitor-pesanan');
+          break;
+        case 3:
+          Navigator.pushNamed(context, '/wishlist');
+          break;
+        case 4:
+          Navigator.pushNamed(context, '/keranjang-checkout');
+          break;
+      }
+      onTap(index);
+    }
+
     if (isWideScreen) {
       return Material(
         elevation: 4,
@@ -50,7 +82,7 @@ class NavbarWidget extends StatelessWidget {
               final item = navItems[index];
               final isSelected = currentIndex == index;
               return GestureDetector(
-                onTap: () => onTap(index),
+                onTap: () => _onItemTapped(index),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +110,7 @@ class NavbarWidget extends StatelessWidget {
 
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      onTap: onTap,
+      onTap: _onItemTapped,
       selectedItemColor: Color(0xFFFE8C00),
       unselectedItemColor: Colors.black,
       showUnselectedLabels: true,
